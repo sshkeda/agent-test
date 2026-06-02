@@ -1,0 +1,11 @@
+{
+  "name": "agent-test-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Forward-test agent-facing CLIs and skills through fresh Codex subagents.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/smoke-test.mjs"
+  }
+}
