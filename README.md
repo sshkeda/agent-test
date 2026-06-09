@@ -47,8 +47,10 @@ it blocks keychain lookups (for example `security find-generic-password`),
 which breaks dogfeeding any tool whose auth self-repair reads the keychain.
 
 Claude probes are isolated by default. The generated command creates a
-temporary blank `CLAUDE_CONFIG_DIR` (no auth copy is needed: Claude Code reads
-credentials from the system keychain) and runs `claude -p` with
+temporary `CLAUDE_CONFIG_DIR` seeded with one file: your OAuth credential
+copied from the macOS keychain into `.credentials.json` (Claude Code only
+serves the keychain credential to the default config dir) and runs `claude -p`
+with
 `--no-session-persistence`, `--strict-mcp-config`, and
 `--permission-mode bypassPermissions`. The probe emits its full transcript as
 stream-json so the parent agent can read every tool call, not just the final

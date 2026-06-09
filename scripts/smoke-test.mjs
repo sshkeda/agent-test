@@ -123,7 +123,8 @@ try {
     !claudeProbe.stdout.includes("--permission-mode bypassPermissions") ||
     !claudeProbe.stdout.includes("--output-format stream-json") ||
     !claudeProbe.stdout.includes("$HOME/.claude/skills/agent-dogfeed") ||
-    claudeProbe.stdout.includes("auth.json") ||
+    !claudeProbe.stdout.includes("Claude Code-credentials") ||
+    !claudeProbe.stdout.includes(".credentials.json") ||
     !claudeProbe.stdout.includes("Run npm test and report the result.")
   ) {
     throw new Error("claude command did not include isolated defaults");
