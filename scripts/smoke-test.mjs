@@ -66,7 +66,11 @@ try {
     !probe.stdout.includes("codex exec") ||
     !probe.stdout.includes("CODEX_HOME") ||
     !probe.stdout.includes("export CODEX_HOME") ||
-    !probe.stdout.includes("--ephemeral") ||
+    probe.stdout.includes("--ephemeral") ||
+    !probe.stdout.includes("AGENT_DOGFEED_SESSION_DIR") ||
+    !probe.stdout.includes("probe session saved in") ||
+    !probe.stdout.includes('HOME="$CODEX_HOME/home" codex exec') ||
+    !probe.stdout.includes("! -name .agents") ||
     !probe.stdout.includes("--ignore-user-config") ||
     !probe.stdout.includes("--ignore-rules") ||
     !probe.stdout.includes("--dangerously-bypass-approvals-and-sandbox") ||
@@ -93,7 +97,7 @@ try {
   if (
     !userProbe.stdout.includes("codex exec") ||
     userProbe.stdout.includes("CODEX_HOME") ||
-    userProbe.stdout.includes("--ephemeral") ||
+    userProbe.stdout.includes("AGENT_DOGFEED_SESSION_DIR") ||
     !userProbe.stdout.includes("Run npm test and report the result.")
   ) {
     throw new Error("user codex command was not explicitly non-isolated");
@@ -118,7 +122,9 @@ try {
     !claudeProbe.stdout.includes("claude -p") ||
     !claudeProbe.stdout.includes("CLAUDE_CONFIG_DIR") ||
     !claudeProbe.stdout.includes("export CLAUDE_CONFIG_DIR") ||
-    !claudeProbe.stdout.includes("--no-session-persistence") ||
+    claudeProbe.stdout.includes("--no-session-persistence") ||
+    !claudeProbe.stdout.includes("AGENT_DOGFEED_SESSION_DIR") ||
+    !claudeProbe.stdout.includes("probe session saved in") ||
     !claudeProbe.stdout.includes("--strict-mcp-config") ||
     !claudeProbe.stdout.includes("--permission-mode bypassPermissions") ||
     !claudeProbe.stdout.includes("--output-format stream-json") ||
@@ -147,7 +153,7 @@ try {
   if (
     !userClaudeProbe.stdout.includes("claude -p") ||
     userClaudeProbe.stdout.includes("CLAUDE_CONFIG_DIR") ||
-    userClaudeProbe.stdout.includes("--no-session-persistence") ||
+    userClaudeProbe.stdout.includes("AGENT_DOGFEED_SESSION_DIR") ||
     !userClaudeProbe.stdout.includes("Run npm test and report the result.")
   ) {
     throw new Error("user claude command was not explicitly non-isolated");

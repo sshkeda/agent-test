@@ -166,14 +166,20 @@ function usage() {
 
 codex and claude print the probe command for review without rewriting the prompt.
 codex probes are isolated by default: a temporary auth-only CODEX_HOME,
---ignore-user-config, --ignore-rules, --ephemeral, and
+--ignore-user-config, --ignore-rules, and
 --dangerously-bypass-approvals-and-sandbox (no OS sandbox, so keychain access
-works for tools that need it).
+works for tools that need it). codex also discovers skills from
+$HOME/.agents/skills regardless of CODEX_HOME, so the probe runs under an
+overlay home that symlinks everything except .agents/.claude/.codex/.pi;
+keychain, gh, ssh, and git state stay available through the symlinks.
 claude probes are isolated by default: a temporary CLAUDE_CONFIG_DIR seeded
 only with your keychain OAuth credential (.credentials.json),
---no-session-persistence, --strict-mcp-config, and --permission-mode
-bypassPermissions. claude probes emit the full transcript as stream-json on
-stdout.
+--strict-mcp-config, and --permission-mode bypassPermissions. claude probes
+emit the full transcript as stream-json on stdout.
+Isolated probes save the session JSONL to a stable temp dir before the
+temporary home is removed and print the path on stderr
+("agent-dogfeed: probe session saved in <dir>") so the transcript can be mined
+afterwards (e.g. with lac).
 Neither probe is OS-sandboxed: point probes at disposable repos or worktrees
 when the prompt can mutate state.
 Use --skill for each required skill to link into the isolated home.
