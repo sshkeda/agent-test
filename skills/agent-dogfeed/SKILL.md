@@ -1,5 +1,6 @@
 ---
 name: agent-dogfeed
+requires: [agent-env, lac]
 description: Dogfood a feature, product, CLI, skill, or code change by running a fresh isolated agent against it and mining the transcript — agent-env/agent-box build the environment, lac reads what the agent actually experienced. Use when you want to know how an agent behaves with something, whether a fresh agent can operate a tool after a change, or what friction a skill/CLI/doc creates.
 ---
 
