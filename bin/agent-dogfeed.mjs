@@ -63,12 +63,12 @@ function usage() {
   return `agent-dogfeed delegates its CLI surface to agent-env (the
 methodology lives in the agent-dogfeed skill).
 
-old surface (still works, delegates):
+delegated commands:
   agent-dogfeed capture [--output <path>] -- <command> [args...]
   agent-dogfeed codex --repo <path> --prompt <p> [--model <m>] [--skill <s>] [--user-codex]
   agent-dogfeed claude --repo <path> --prompt <p> [--model <m>] [--skill <s>] [--user-claude]
 
-new surface:
+agent-env surface:
   agent-env probe <codex|claude> --repo <path> --prompt <p> [--model <m>] [--skill <s>] [--user]
   agent-env up <codex|claude> --repo <path>        (interactive isolated session)
   agent-env capture [--output <path>] -- <command> [args...]

@@ -21,7 +21,7 @@ lives in `skills/agent-dogfeed/SKILL.md`.
 ## CLI
 
 The probe-rendering machinery lives in agent-env; the `agent-dogfeed`
-binary remains as a thin delegate for the old surface:
+binary is a thin delegate:
 
 ```bash
 agent-dogfeed codex --repo <path> --prompt '<raw prompt>'   # -> agent-env probe codex ...
@@ -29,4 +29,4 @@ agent-dogfeed claude --repo <path> --prompt '<raw prompt>'  # -> agent-env probe
 agent-dogfeed capture -- <command>                          # -> agent-env capture ...
 ```
 
-Prefer calling `agent-env` directly in new work.
+Prefer calling `agent-env` directly.
