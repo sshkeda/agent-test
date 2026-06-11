@@ -1,14 +1,14 @@
 {
   "name": "agent-dogfeed",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Forward-test agent-facing CLIs and skills through fresh Codex or Claude Code subagents.",
+  "description": "SUPERSEDED by agent-env — compatibility shim that delegates the old probe/capture surface to the agent-env CLI.",
   "license": "MIT",
   "type": "module",
   "bin": {
     "agent-dogfeed": "bin/agent-dogfeed.mjs"
   },
   "scripts": {
-    "test": "node scripts/smoke-test.mjs"
+    "test": "node bin/agent-dogfeed.mjs claude --repo /tmp --prompt smoke > /dev/null && echo shim-ok"
   }
 }
