@@ -19,7 +19,9 @@ output, exit codes, files, or external state.
    - `agent-box` when the test also needs its own copy of a codebase, dev
      server, or test run.
 3. Write the raw prompt yourself — short enough that the agent has room to
-   interpret; what it misunderstands is data.
+   interpret; what it misunderstands is data. Make it demand DOING, not
+   describing: "what would you run" gets answered from priors without the
+   skill ever loading.
 4. Run the agent:
 
    ```bash
